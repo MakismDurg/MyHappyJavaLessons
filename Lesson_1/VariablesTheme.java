@@ -21,7 +21,7 @@ public class VariablesTheme {
         int pricePen = 100;
         int priceBook = 200;
         int discountPercent = 11;
-        int sumDiscount=(pricePen + priceBook) / 100 * discountPercent;
+        int sumDiscount = (pricePen + priceBook) / 100 * discountPercent;
         System.out.println("\nСумма скидки: " + sumDiscount +
                 "\nОбщая стоимость товаров со скидкой: " + (pricePen + priceBook - sumDiscount));
 
@@ -47,8 +47,7 @@ public class VariablesTheme {
         System.out.println("\nТип: int" +
                 "\nПервоначальное значение: " + i +
                 "\nЗначение после инкремента: " + ++i +
-                "\nЗначение после декремента: " + --i
-        );
+                "\nЗначение после декремента: " + --i );
         System.out.println("\nТип: long" +
                 "\nПервоначальное значение: " + l +
                 "\nЗначение после инкремента: " + ++l +
@@ -109,7 +108,7 @@ public class VariablesTheme {
                 + slash + backslash + underscore + underscore + backslash);
 
         System.out.println("\n9. Вывод произведения и суммы цифр числа");
-        srcNum =345;
+        srcNum = 345;
         hundreds = srcNum  / 100;
         tens = srcNum  / 10 % 10;
         ones =  srcNum  % 10;
@@ -118,9 +117,9 @@ public class VariablesTheme {
 
         System.out.println("\n10. Вывод времени в формате ЧЧ:ММ:СС");
         int timeLimit = 86399;
-        int hours=timeLimit / 3600;
-        int minutes=timeLimit % 3600 / 60;
-        int seconds=timeLimit % 60;
+        int hours = timeLimit / 3600;
+        int minutes = timeLimit % 3600 / 60;
+        int seconds = timeLimit % 60;
         System.out.println("\n" + hours + ":" + minutes + ":" + seconds);
     }
 }
