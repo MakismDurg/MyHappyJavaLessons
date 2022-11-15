@@ -70,64 +70,51 @@ public class IfElseStatementTheme {
         int digitII2 = num2 / 10 % 10;
         int digitIII2 = num2 / 100; 
         System.out.println("Есть числа: " + num1 + " и " + num2);
-        if(digitI1 != digitI2) {
-            if(digitII1 != digitII2) {
-                if(digitIII1 != digitIII2) {
-                    System.out.println("Совпадений в цифрах по разрядам нет");
-                }
-            }
-        }
         if(digitI1 == digitI2) {
             if(digitII1 == digitII2) {
                 if(digitIII1 == digitIII2) {
                     System.out.println("Совпадают цифры I, II и III разрядов");
                 }
             }
-        }
-        if(digitI1 ==  digitI2) {
+        } else if(digitI1 ==  digitI2) {
             if(digitII1 != digitII2) {
                 if(digitIII1 != digitIII2) {
                     System.out.println("Совпадают цифры I разряда");
                 }
             }
-        }
-        if(digitI1 !=  digitI2) {
+        } else if(digitI1 !=  digitI2) {
             if(digitII1 == digitII2) {
                 if(digitIII1 != digitIII2) {
                     System.out.println("Совпадают цифры II разряда");
                 }
             }
-        }
-        if(digitI1 !=  digitI2) {
+        } else if(digitI1 !=  digitI2) {
             if(digitII1 != digitII2) {
                 if(digitIII1 == digitIII2) {
                     System.out.println("Совпадают цифры III разряда");
                 }
             }
-        }
-        if(digitI1 ==  digitI2) {
+        } else if(digitI1 ==  digitI2) {
             if(digitII1 == digitII2) {
                 if(digitIII1 != digitIII2) {
                     System.out.println("Совпадают цифры I и II разряда");
                 }
             }
-        }
-        if(digitI1 !=  digitI2) {
+        } else if(digitI1 !=  digitI2) {
             if(digitII1 == digitII2) {
                 if(digitIII1 == digitIII2) {
                     System.out.println("Совпадают цифры II и III разряда");
                 }
             }
-        }
-        if(digitI1 ==  digitI2) {
+        } else if(digitI1 ==  digitI2) {
             if(digitII1 != digitII2) {
                 if(digitIII1 == digitIII1) {
                     System.out.println("Совпадают цифры I и III разряда");
                 }
             }
-        }
-        System.out.println("\n5. Определение символа по его коду.\n");
-        char symbol = ‘\u0057’;
-        System.out.println("Символ " + symbol);
+        } else {
+        	System.out.println("Совпадений в цифрах по разрядам нет");
+       }
+  
 	}
 }
