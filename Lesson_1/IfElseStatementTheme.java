@@ -36,7 +36,7 @@ public class IfElseStatementTheme {
             System.out.println("Число num1 больше, чем число num2");
         } else if(num1 < num2) {
             System.out.println("Число num2 больше, чем число num1 ");
-        } else (num1 == num2) {
+        } else {
             System.out.println("Число num1 равно числу num2");
         }
 
@@ -50,14 +50,14 @@ public class IfElseStatementTheme {
                     System.out.println("Число N равно " + numN + ", является положительным и нечётным");
                 }
             } else if (numN % 2 == 0) {
-                    System.out.println("Число N равно " + numN + ", является отрицательным и чётным");
+                System.out.println("Число N равно " + numN + ", является отрицательным и чётным");
             } else {
                 System.out.println("Число N равно " + numN + ", является отрицательным и нечётным");
             }
         } else {
             System.out.println("Число N равно 0");
         }
-    
+
 
 
         System.out.println("\n4. Поиск одинаковых цифр в числах\n");
@@ -82,29 +82,29 @@ public class IfElseStatementTheme {
                 System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры I разряда");
             }
         } else if (tens1 == tens2) {
-                if (hunds1 == hunds2) {
-                    System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры II и III разрядов");
-                } else {
-                    System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры II разряда");
-                }
+            if (hunds1 == hunds2) {
+                System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры II и III разрядов");
+            } else {
+                System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры II разряда");
+            }
         } else if (hunds1 == hunds2) {
             System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры III разрядa");
         } else {
             System.out.println("В числах " + num1 + " и " + num2 + " совпадений в цифрах нет");
         }
 
-         System.out.println("\n5. Определение символа по его коду.\n");
+        System.out.println("\n5. Определение символа по его коду.\n");
           /*
         Я не нашёл способа сделать 5 задание без вложенных проверок, не прибегая к оператору &&.
         Прибегнув к нему, мне кажется, что я забежал вперёд.
         */
         char symbol = '\u0057';
         if (symbol >= '0' && symbol <= '9') {
-                System.out.println("Символ " + symbol + " является цифрой.");
+            System.out.println("Символ " + symbol + " является цифрой.");
         } else if (symbol >= 'A' && symbol <= 'Z') {
-                System.out.println("Символ " + symbol + " является заглавной буквой.");
+            System.out.println("Символ " + symbol + " является заглавной буквой.");
         } else if (symbol >= 'a' && symbol <= 'z') {
-                System.out.println("Символ " + symbol + " является строчной буквой.");
+            System.out.println("Символ " + symbol + " является строчной буквой.");
         } else {
             System.out.println("Символ " + symbol + " не является буквой или числом.");
         }
@@ -244,8 +244,8 @@ public class IfElseStatementTheme {
                     if(howManyOnesNeed - notesInStockOnes > 0) {
                         System.out.println("Данной суммы нет в наличии. Пожалуйста, выберите сумму меньше");
                     } else {
-                            withdrawnOnes = notesInStockOnes - howManyOnesNeed;
-                            notesInStockOnes = notesInStockOnes - withdrawnOnes;
+                        withdrawnOnes = notesInStockOnes - howManyOnesNeed;
+                        notesInStockOnes = notesInStockOnes - withdrawnOnes;
                         System.out.println("\nСумма к выдаче: " + withdrawal +
                                 "\nВыдача будет произведена в банкнотах номиналом: 1$, 10$, 100$" +
                                 "\nТребуемое количество банкнот:\n" +
