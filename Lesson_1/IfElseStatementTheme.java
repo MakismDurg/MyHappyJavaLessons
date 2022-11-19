@@ -59,8 +59,8 @@ public class IfElseStatementTheme {
         }
 
         System.out.println("\n4. Поиск одинаковых цифр в числах\n");
-        num1 = 110;
-        num2 = 111;
+        int num1 = 318;
+        int num2 = 311;
         int ones1 = num1 % 10;
         int tens1 = num1 / 10 % 10;
         int hunds1 = num1 / 100;
@@ -68,27 +68,13 @@ public class IfElseStatementTheme {
         int tens2 = num2 / 10 % 10;
         int hunds2 = num2 / 100;
         if (ones1 == ones2) {
-            if (tens1 == tens2) {
-                if (hunds1 == hunds2) {
-                    System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры I, II и III разрядов");
-                } else {
-                    System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры I и II разрядов");
-                }
-            } else if (hunds1 == hunds2) {
-                System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры I и III разрядов");
-            } else {
-                System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры I разряда");
-            }
+            System.out.println("Совпадают цифры " + ones1 + " и " + ones2 + " стоящие в первом разряде.");
         } else if (tens1 == tens2) {
-                if (hunds1 == hunds2) {
-                    System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры II и III разрядов");
-                } else {
-                    System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры II разряда");
-                }
+            System.out.println("Совпадают цифры " + tens1 + " и " + tens2 + " стоящие во втором разряде.");
         } else if (hunds1 == hunds2) {
-            System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры III разрядa");
+            System.out.println("Совпадают цифры " + hunds1 + " и " + hunds2 + " стоящие в третьем разряде.");
         } else {
-            System.out.println("В числах " + num1 + " и " + num2 + " совпадений в цифрах нет");
+            System.out.println("Цифры ни одного из разрядов не совпадают.");
         }
 
          System.out.println("\n5. Определение символа по его коду.\n");
