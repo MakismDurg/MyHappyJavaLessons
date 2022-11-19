@@ -153,116 +153,65 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("Прибыль за год: " + yearProfit);
         }
+
         System.out.println("\n9. Подсчет количества банкнот.\n");
         int withdrawal = 567;
-        int notesInStockOnes = 40;
-        int notesInStockTens = 5;
-        int notesInStockHunds = 10;
-        int howManyOnesNeed = withdrawal % 10;
-        int howManyTensNeed = withdrawal % 100 / 10;
-        int howManyHundsNeed = withdrawal / 100;
+        int onesInStock = 50;
+        int tensInStock = 5;
+        int hundsInStock = 10;
+        int needOnes = withdrawal % 10;
+        int needTens = withdrawal % 100 / 10;
+        int needHunds = withdrawal / 100;
         int withdrawnOnes = 0;
         int withdrawnTens = 0;
         int withdrawnHunds = 0;
-        if(howManyHundsNeed - notesInStockHunds > 0) {
-            withdrawnHunds = notesInStockHunds;
-            int missingNotes = howManyHundsNeed - notesInStockHunds;
-            int changeTens = missingNotes * 10;
-            if(changeTens - notesInStockTens > 0) {
-                withdrawnTens = notesInStockTens;
-                missingNotes = changeTens - notesInStockTens;
-                int changeOnes = missingNotes * 10;
-                if(changeOnes - notesInStockOnes > 0){
-                    System.out.println("Данной суммы нет в наличии. Пожалуйста, выберите сумму меньше");
-                } else {
-                    withdrawnOnes = changeOnes;
-                    if(howManyTensNeed > 0){
-                        System.out.println("Данной суммы нет в наличии. Пожалуйста, выберите сумму меньше");
-                    } else {
-                        notesInStockOnes = notesInStockOnes - changeOnes;
-                        if(howManyOnesNeed - notesInStockOnes > 0){
-                            System.out.println("Данной суммы нет в наличии. Пожалуйста, выберите сумму меньше");
-                        } else {
-                            withdrawnOnes = withdrawnOnes + howManyOnesNeed;
-                            System.out.println("\nСумма к выдаче: " + withdrawal +
-                                    "\nВыдача будет произведена в банкнотах номиналом: 1$, 10$, 100$" +
-                                    "\nТребуемое количество банкнот:\n" +
-                                    withdrawnOnes + " - 1$" + "\n" +
-                                    withdrawnTens + " - 10$" + "\n" +
-                                    withdrawnHunds + " - 100$");
-                        }
-                    }
-                }
-            } else {
-                notesInStockTens = notesInStockTens - changeTens;
-                withdrawnTens = changeTens;
-                if (howManyTensNeed - notesInStockTens > 0) {
-                    missingNotes = howManyTensNeed - notesInStockTens;
-                    int changeOnes = missingNotes * 10;
-                    if(howManyOnesNeed - notesInStockOnes > 0) {
-                        System.out.println("Данной суммы нет в наличии. Пожалуйста, выберите сумму меньше");
-                    } else {
-                        notesInStockOnes = notesInStockOnes - changeOnes;
-                        if (howManyOnesNeed - notesInStockOnes > 0){
-                            System.out.println("Данной суммы нет в наличии. Пожалуйста, выберите сумму меньше");
-                        } else {
-
-                        }
-                    }
-                } else {
-                    withdrawnTens = withdrawnTens + howManyTensNeed;
-                    if(howManyOnesNeed - notesInStockOnes > 0) {
-                        System.out.println("Данной суммы нет в наличии. Пожалуйста, выберите сумму меньше");
-                    } else {
-                            withdrawnOnes = notesInStockOnes - howManyOnesNeed;
-                            notesInStockOnes = notesInStockOnes - withdrawnOnes;
-                        System.out.println("\nСумма к выдаче: " + withdrawal +
-                                "\nВыдача будет произведена в банкнотах номиналом: 1$, 10$, 100$" +
-                                "\nТребуемое количество банкнот:\n" +
-                                withdrawnOnes + " - 1$" + "\n" +
-                                withdrawnTens + " - 10$" + "\n" +
-                                withdrawnHunds + " - 100$");
-                    }
-                }
-            }
+        int missingHunds = needHunds - hundsInStock;
+        int missinTens = needTens - tensInStock;
+        int compensationTensByOnes = missinTens * 10;
+        int compensationHundsByTens = missingHunds * 10;
+        int compensationHundsByOnes = (needTens + compensationHundsByTens - tensInStock) * 10;
+        if (needOnes <= onesInStock && needTens <= tensInStock && needHunds <= hundsInStock) {
+            withdrawnOnes = needOnes;
+            withdrawnTens = needTens;
+            withdrawnHunds = needHunds;
+            System.out.println("\nСумма к выдаче: " + withdrawal +
+                    "\nВыдача будет произведена в банкнотах номиналом: 1$, 10$, 100$" +
+                    "\nТребуемое количество банкнот:\n" +
+                    withdrawnOnes + " - 1$" + "\n" +
+                    withdrawnTens + " - 10$" + "\n" +
+                    withdrawnHunds + " - 100$");
+        } else if (needOnes < onesInStock && needTens + compensationHundsByTens <= tensInStock && needHunds > hundsInStock) {
+            withdrawnOnes = needOnes;
+            withdrawnTens = needTens + compensationHundsByTens;
+            withdrawnHunds = hundsInStock;
+            System.out.println("\nСумма к выдаче: " + withdrawal +
+                    "\nВыдача будет произведена в банкнотах номиналом: 1$, 10$, 100$" +
+                    "\nТребуемое количество банкнот:\n" +
+                    withdrawnOnes + " - 1$" + "\n" +
+                    withdrawnTens + " - 10$" + "\n" +
+                    withdrawnHunds + " - 100$");
+        } else if (needOnes + compensationHundsByOnes <= onesInStock && needTens + compensationHundsByTens > tensInStock && needHunds > hundsInStock) {
+            withdrawnOnes = needOnes + compensationHundsByOnes;
+            withdrawnTens = tensInStock;
+            withdrawnHunds = hundsInStock;
+            System.out.println("\nСумма к выдаче: " + withdrawal +
+                    "\nВыдача будет произведена в банкнотах номиналом: 1$, 10$, 100$" +
+                    "\nТребуемое количество банкнот:\n" +
+                    withdrawnOnes + " - 1$" + "\n" +
+                    withdrawnTens + " - 10$" + "\n" +
+                    withdrawnHunds + " - 100$");
+        } else if (needOnes + compensationTensByOnes <= onesInStock && needTens > tensInStock && needHunds <= hundsInStock) {
+            withdrawnOnes = needOnes + compensationTensByOnes;
+            withdrawnTens = tensInStock;
+            withdrawnHunds = needHunds;
+            System.out.println("\nСумма к выдаче: " + withdrawal +
+                    "\nВыдача будет произведена в банкнотах номиналом: 1$, 10$, 100$" +
+                    "\nТребуемое количество банкнот:\n" +
+                    withdrawnOnes + " - 1$" + "\n" +
+                    withdrawnTens + " - 10$" + "\n" +
+                    withdrawnHunds + " - 100$");
         } else {
-            withdrawnHunds = howManyHundsNeed;
-            if(howManyTensNeed - notesInStockTens > 0){
-                withdrawnTens = notesInStockTens;
-                int missingNotes = howManyTensNeed - notesInStockTens;
-                int changeOnes = missingNotes * 10;
-                notesInStockOnes = notesInStockOnes - withdrawnOnes;
-                if(howManyOnesNeed - notesInStockOnes > 0) {
-                    System.out.println("Данной суммы нет в наличии. Пожалуйста, выберите сумму меньше");
-                } else {
-                    withdrawnOnes = changeOnes;
-                    if (howManyOnesNeed - notesInStockOnes > 0){
-                        System.out.println("Данной суммы нет в наличии. Пожалуйста, выберите сумму меньше");
-                    } else {
-                        withdrawnOnes = withdrawnOnes + howManyOnesNeed;
-                        notesInStockOnes = notesInStockOnes - withdrawnOnes;
-                        System.out.println("\nСумма к выдаче: " + withdrawal +
-                                "\nВыдача будет произведена в банкнотах номиналом: 1$, 10$, 100$" +
-                                "\nТребуемое количество банкнот:\n" +
-                                withdrawnOnes + " - 1$" + "\n" +
-                                withdrawnTens + " - 10$" + "\n" +
-                                withdrawnHunds + " - 100$");
-                    }
-                }
-            } else {
-                withdrawnTens = howManyTensNeed;
-                if (howManyOnesNeed - notesInStockOnes > 0) {
-                    System.out.println("Данной суммы нет в наличии. Пожалуйста, выберите сумму меньше");
-                } else {
-                    withdrawnOnes = howManyOnesNeed;
-                    System.out.println("\nСумма к выдаче: " + withdrawal +
-                            "\nВыдача будет произведена в банкнотах номиналом: 1$, 10$, 100$" +
-                            "\nТребуемое количество банкнот:\n" +
-                            withdrawnOnes + " - 1$" + "\n" +
-                            withdrawnTens + " - 10$" + "\n" +
-                            withdrawnHunds + " - 100$");
-                }
-            }
+            System.out.println("Запрашиваемая сумма не может быть выдана. Пожалуйста, выберите другую сумму.");
         }
     }
 }
