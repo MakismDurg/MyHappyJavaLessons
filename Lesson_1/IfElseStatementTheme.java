@@ -36,12 +36,12 @@ public class IfElseStatementTheme {
             System.out.println("Число num1 больше, чем число num2");
         } else if(num1 < num2) {
             System.out.println("Число num2 больше, чем число num1 ");
-        } else (num1 == num2) {
+        } else {
             System.out.println("Число num1 равно числу num2");
         }
 
         System.out.println("\n3. Проверка числа N\n");
-        int numN = 0;
+        int numN = 228;
         if (numN !=0 ) {
             System.out.println("Число N равно " + numN);
             if (numN > 0) {
@@ -59,8 +59,8 @@ public class IfElseStatementTheme {
         }
 
         System.out.println("\n4. Поиск одинаковых цифр в числах\n");
-        int num1 = 318;
-        int num2 = 311;
+        num1 = 318;
+        num2 = 311;
         int ones1 = num1 % 10;
         int tens1 = num1 / 10 % 10;
         int hunds1 = num1 / 100;
@@ -93,31 +93,25 @@ public class IfElseStatementTheme {
             System.out.println("Символ " + symbol + " не является буквой или числом.");
         }
 
-        System.out.println("\n6. Подсчет суммы вклада и начисленных банком %\n");
+       System.out.println("\n6. Подсчет суммы вклада и начисленных банком %\n");
         float deposit = 300000.00f;
-        int lowerLimit = 100000;
-        int upperLimit = 300000;
-        float minDepositRate = 0.05f;
-        float midDepositRate = 0.07f;
-        float maxDepositRate = 0.1f;
-        if(deposit < lowerLimit) {
-            float rateSum = deposit * minDepositRate;
+        float depositPercentMin = deposit * 0.05f;
+        float depositPercentMid = deposit * 0.07f;
+        float depositPercentMax = deposit * 0.1f;
+        if (deposit < 100000) {
             System.out.println("Сумма вклада: " + deposit +
-                    "\nНачисленный процент: " + rateSum +
-                    "\nIтоговая сумма: " + (deposit + rateSum));
-        } else if(deposit >= lowerLimit) {
-            if(deposit <= upperLimit) {
-                float rateSum = deposit * midDepositRate;
-                System.out.println("Сумма вклада: " + deposit +
-                        "\nНачисленный процент: " + rateSum +
-                        "\nIтоговая сумма: " + (deposit + rateSum));
-            } else if(deposit > upperLimit) {
-                float rateSum = deposit * maxDepositRate;
-                System.out.println("Сумма вклада: " + deposit +
-                        "\nНачисленный процент: " + rateSum +
-                        "\nIтоговая сумма: " + (deposit + rateSum));
-            }
+                    "\nНачисленный процент: " + depositPercentMin +
+                    "\nIтоговая сумма: " + (deposit + depositPercentMin));
+        } else if (deposit >= 100000 && deposit >= 300000) {
+            System.out.println("Сумма вклада: " + deposit +
+                    "\nНачисленный процент: " + depositPercentMid +
+                    "\nIтоговая сумма: " + (deposit + depositPercentMid));
+        } else  if (deposit < 100000) {
+            System.out.println("Сумма вклада: " + deposit +
+                    "\nНачисленный процент: " + depositPercentMax +
+                    "\nIтоговая сумма: " + (deposit + depositPercentMax));
         }
+
         System.out.println("\n7. Определение оценки по предметам.\n");
         int percentProg = 91;
         int markProg = 0;
