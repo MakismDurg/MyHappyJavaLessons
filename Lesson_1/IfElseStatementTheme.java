@@ -7,9 +7,9 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("Тебе меньше 20 лет");
         }
-        boolean isThisMale = true;
-        if(!isThisMale) {
-            System.out.println("Женщина)");
+        boolean maleGender = true;
+        if(!maleGender) {
+            System.out.println("Женщина или кто-то из остальныех 49 гендеров.");
         } else {
             System.out.println("Мужчина");
         }
@@ -19,10 +19,10 @@ public class IfElseStatementTheme {
         } else {
             System.out.println("Рост более 1м 80см");
         }
-        char firstLetterOfName = "Maksim".charAt(0);
-        if(firstLetterOfName == 'M') {
+        char capitalLetter = "Maksim".charAt(0);
+        if(capitalLetter == 'M') {
             System.out.println("имя начинается на букву «М»");
-        }  else if(firstLetterOfName == 'I') {
+        }  else if(capitalLetter == 'I') {
             System.out.println("имя начинается на букву «I»");
         } else {
             System.out.println("Допустимы имена, начинающиеся на «М» или «I». "
@@ -36,106 +36,75 @@ public class IfElseStatementTheme {
             System.out.println("Число num1 больше, чем число num2");
         } else if(num1 < num2) {
             System.out.println("Число num2 больше, чем число num1 ");
-        } else if (num1 == num2) {
+        } else (num1 == num2) {
             System.out.println("Число num1 равно числу num2");
         }
 
-        System.out.println("\n3. Проверка числа\n");
-        int numN = 749;
-        if(numN == 0){
-            System.out.println("Число N равно нулю");
-        } else if(numN % 2 == 0) {
-            System.out.println("Число N является чётными и равно " + numN);
-            if(numN > 0) {
-                System.out.println("Число N положительное");
-            } else if(numN < 0) {
-                System.out.println("Число N отрицательное");
-            }
-        } else if(numN % 2 != 0) {
-            System.out.println("Число N не является чётными и равно " + numN);
-            if(numN > 0) {
-                System.out.println("Число N положительное");
-            } else if(numN < 0) {
-                System.out.println("Число N отрицательное");
-            }
-        }
-
-        System.out.println("\n4. Поиск одинаковых цифр в числах\n");
-        num1 = 111;
-        num2 = 211;
-        int digitI1 = num1 % 10;
-        int digitII1 = num1 / 10 % 10;
-        int digitIII1 = num1 / 100;
-        int digitI2 = num2 % 10;
-        int digitII2 = num2 / 10 % 10;
-        int digitIII2 = num2 / 100;
-        System.out.println("Есть числа: " + num1 + " и " + num2);
-        if(digitI1 == digitI2) {
-            if(digitII1 == digitII2) {
-                if(digitIII1 == digitIII2) {
-                    System.out.println("Совпадают цифры I, II и III разрядов");
+        System.out.println("\n3. Проверка числа N\n");
+        int numN = 228;
+        if (numN !=0 ) {
+            if (numN > 0) {
+                if (numN % 2 == 0) {
+                    System.out.println("Число N равно " + numN + ", является положительным и чётным");
+                } else {
+                    System.out.println("Число N равно " + numN + ", является положительным и нечётным");
                 }
-            }
-        } else if(digitI1 ==  digitI2) {
-            if(digitII1 != digitII2) {
-                if(digitIII1 != digitIII2) {
-                    System.out.println("Совпадают цифры I разряда");
-                }
-            }
-        } else if(digitI1 !=  digitI2) {
-            if(digitII1 == digitII2) {
-                if(digitIII1 != digitIII2) {
-                    System.out.println("Совпадают цифры II разряда");
-                }
-            }
-        } else if(digitI1 !=  digitI2) {
-            if(digitII1 != digitII2) {
-                if(digitIII1 == digitIII2) {
-                    System.out.println("Совпадают цифры III разряда");
-                }
-            }
-        } else if(digitI1 ==  digitI2) {
-            if(digitII1 == digitII2) {
-                if(digitIII1 != digitIII2) {
-                    System.out.println("Совпадают цифры I и II разряда");
-                }
-            }
-        } else if(digitI1 !=  digitI2) {
-            if(digitII1 == digitII2) {
-                if(digitIII1 == digitIII2) {
-                    System.out.println("Совпадают цифры II и III разряда");
-                }
-            }
-        } else if(digitI1 ==  digitI2) {
-            if(digitII1 != digitII2) {
-                if(digitIII1 == digitIII2) {
-                    System.out.println("Совпадают цифры I и III разряда");
-                }
+            } else if (numN % 2 == 0) {
+                    System.out.println("Число N равно " + numN + ", является отрицательным и чётным");
+            } else {
+                System.out.println("Число N равно " + numN + ", является отрицательным и нечётным");
             }
         } else {
-            System.out.println("Совпадений в цифрах по разрядам нет");
+            System.out.println("Число N равно 0");
+        }
+    
+
+
+        System.out.println("\n4. Поиск одинаковых цифр в числах\n");
+        num1 = 110;
+        num2 = 111;
+        int ones1 = num1 % 10;
+        int tens1 = num1 / 10 % 10;
+        int hunds1 = num1 / 100;
+        int ones2 = num2 % 10;
+        int tens2 = num2 / 10 % 10;
+        int hunds2 = num2 / 100;
+        if (ones1 == ones2) {
+            if (tens1 == tens2) {
+                if (hunds1 == hunds2) {
+                    System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры I, II и III разрядов");
+                } else {
+                    System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры I и II разрядов");
+                }
+            } else if (hunds1 == hunds2) {
+                System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры I и III разрядов");
+            } else {
+                System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры I разряда");
+            }
+        } else if (tens1 == tens2) {
+                if (hunds1 == hunds2) {
+                    System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры II и III разрядов");
+                } else {
+                    System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры II разряда");
+                }
+        } else if (hunds1 == hunds2) {
+            System.out.println("В числах " + num1 + " и " + num2 + " совпадают цифры III разрядa");
+        } else {
+            System.out.println("В числах " + num1 + " и " + num2 + " совпадений в цифрах нет");
         }
 
-        System.out.println("\n5. Определение символа по его коду.\n");
+         System.out.println("\n5. Определение символа по его коду.\n");
+          /*
+        Я не нашёл способа сделать 5 задание без вложенных проверок, не прибегая к оператору &&.
+        Прибегнув к нему, мне кажется, что я забежал вперёд.
+        */
         char symbol = '\u0057';
-        System.out.println("Символ " + symbol);
-        if (symbol >= '0') {
-            if (symbol <= '9') {
+        if (symbol >= '0' && symbol <= '9') {
                 System.out.println("Символ " + symbol + " является цифрой.");
-            } else if (symbol >= 'A') {
-                if (symbol <= 'Z') {
-                    System.out.println("Символ " + symbol + " является заглавной буквой.");
-                } else if (symbol >= 'a') {
-                    if (symbol <= 'z') {
-                        System.out.println("Символ " + symbol + " является строчной буквой.");
-                    } else if(symbol > 'z') {
-                        System.out.println("Символ " + symbol + " не является буквой или числом.");
-                    }
-                } else {
-                    System.out.println("Символ " + symbol + " не является буквой или числом.");
-                }
-            } else {
-                System.out.println("Символ " + symbol + " не является буквой или числом.");}
+        } else if (symbol >= 'A' && symbol <= 'Z') {
+                System.out.println("Символ " + symbol + " является заглавной буквой.");
+        } else if (symbol >= 'a' && symbol <= 'z') {
+                System.out.println("Символ " + symbol + " является строчной буквой.");
         } else {
             System.out.println("Символ " + symbol + " не является буквой или числом.");
         }
@@ -234,7 +203,7 @@ public class IfElseStatementTheme {
                 missingNotes = changeTens - notesInStockTens;
                 int changeOnes = missingNotes * 10;
                 if(changeOnes - notesInStockOnes > 0){
-                    System.out.println("Данной суммы нет в наличии. Пожалуйста, выберите сумму меньше (не хватает десяток и рублей, чтобы набрать просто сотни)");
+                    System.out.println("Данной суммы нет в наличии. Пожалуйста, выберите сумму меньше");
                 } else {
                     withdrawnOnes = changeOnes;
                     if(howManyTensNeed > 0){
@@ -242,7 +211,7 @@ public class IfElseStatementTheme {
                     } else {
                         notesInStockOnes = notesInStockOnes - changeOnes;
                         if(howManyOnesNeed - notesInStockOnes > 0){
-                            System.out.println("Данной суммы нет в наличии. Пожалуйста, выберите сумму меньше (не хватило рублей)");
+                            System.out.println("Данной суммы нет в наличии. Пожалуйста, выберите сумму меньше");
                         } else {
                             withdrawnOnes = withdrawnOnes + howManyOnesNeed;
                             System.out.println("\nСумма к выдаче: " + withdrawal +
