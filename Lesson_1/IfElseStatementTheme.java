@@ -112,36 +112,28 @@ public class IfElseStatementTheme {
                     "\nIтоговая сумма: " + (deposit + depositPercentMax));
         }
 
-        System.out.println("\n7. Определение оценки по предметам.\n");
+                System.out.println("\n7. Определение оценки по предметам.\n");
         int percentProg = 91;
         int markProg = 0;
         if(percentProg <= 60) {
             markProg = 2;
-        } else if(percentProg > 60) {
-            if(percentProg <= 73) {
+        } else if(percentProg > 60 && percentProg <= 73) {
                 markProg = 3;
-            } else if(percentProg > 73) {
-                if(percentProg <= 91){
-                    markProg = 4;
-                } else {
-                    markProg = 5;
-                }
-            }
+        } else if(percentProg > 73 && percentProg <= 91){
+            markProg = 4;
+        } else {
+            markProg = 5;
         }
         int percentHist = 59;
         int markHist = 0;
         if(percentHist <= 60) {
             markHist = 2;
-        } else if(percentHist > 60) {
-            if(percentHist <= 73) {
-                markHist = 3;
-            } else if(percentHist > 73) {
-                if(percentHist <= 91){
-                    markHist = 4;
-                } else {
-                    markHist = 5;
-                }
-            }
+        } else if(percentHist > 60 && percentHist <= 73) {
+            markHist = 3;
+        } else if(percentHist > 73 && percentHist <= 91){
+            markHist = 4;
+        } else {
+            markHist = 5;
         }
         int midMark = (markHist + markProg)/2;
         int midPercent = (percentHist + percentProg)/2;
