@@ -9,7 +9,7 @@ public class IfElseStatementTheme {
         }
         boolean maleGender = true;
         if(!maleGender) {
-            System.out.println("Женщина или кто-то из остальныех 49 гендеров.");
+            System.out.println("Женщина или кто-то из остальных 49 гендеров.");
         } else {
             System.out.println("Мужчина");
         }
@@ -40,26 +40,26 @@ public class IfElseStatementTheme {
             System.out.println("Число num1 равно числу num2");
         }
 
-        System.out.println("\n3. Проверка числа N\n");
+        System.out.println("\n3. Проверка числа\n");
         int numN = 228;
-        if (numN !=0 ) {
-            System.out.println("Число N равно " + numN);
+        if (numN != 0) {
+            System.out.println("У нас есть число, равное " + numN + ". Оно:");
             if (numN > 0) {
-                System.out.println("Число N является положительным");
+                System.out.println("	- положительное");
             } else {
-                System.out.println("Число N является отрицательным");
+                System.out.println("	- отрицательное");
             }
             if (numN % 2 == 0) {
-                System.out.println("Число N является чётным");
+                System.out.println("	- чётное");
             } else {
-                System.out.println("Число N является нечётным");
+                System.out.println("	- нечётное");
             }
         } else {
-            System.out.println("Число N равно 0");
+            System.out.println("У нас есть число, равное 0");
         }
 
         System.out.println("\n4. Поиск одинаковых цифр в числах\n");
-        num1 = 318;
+        num1 = 228;
         num2 = 311;
         int ones1 = num1 % 10;
         int tens1 = num1 / 10 % 10;
@@ -69,85 +69,74 @@ public class IfElseStatementTheme {
         int hunds2 = num2 / 100;
         if (ones1 == ones2) {
             System.out.println("Совпадают цифры " + ones1 + " и " + ones2 + " стоящие в первом разряде.");
-        } else if (tens1 == tens2) {
+        }
+        if (tens1 == tens2) {
             System.out.println("Совпадают цифры " + tens1 + " и " + tens2 + " стоящие во втором разряде.");
-        } else if (hunds1 == hunds2) {
+        }
+        if (hunds1 == hunds2) {
             System.out.println("Совпадают цифры " + hunds1 + " и " + hunds2 + " стоящие в третьем разряде.");
-        } else {
+        }
+        if (ones1 != ones2 && tens1 != tens2 && hunds1 != hunds2) {
             System.out.println("Цифры ни одного из разрядов не совпадают.");
         }
 
-         System.out.println("\n5. Определение символа по его коду.\n");
-          /*
-        Я не нашёл способа сделать 5 задание без вложенных проверок, не прибегая к оператору &&.
-        Прибегнув к нему, мне кажется, что я забежал вперёд.
-        */
+        System.out.println("\n5. Определение символа по его коду.\n");
         char symbol = '\u0057';
         if (symbol >= '0' && symbol <= '9') {
-                System.out.println("Символ " + symbol + " является цифрой.");
+            System.out.println("Символ " + symbol + " является цифрой.");
         } else if (symbol >= 'A' && symbol <= 'Z') {
-                System.out.println("Символ " + symbol + " является заглавной буквой.");
+        	System.out.println("Символ " + symbol + " является заглавной буквой.");
         } else if (symbol >= 'a' && symbol <= 'z') {
-                System.out.println("Символ " + symbol + " является строчной буквой.");
+        	System.out.println("Символ " + symbol + " является строчной буквой.");
         } else {
             System.out.println("Символ " + symbol + " не является буквой или числом.");
         }
 
-       System.out.println("\n6. Подсчет суммы вклада и начисленных банком %\n");
+        System.out.println("\n6. Подсчет суммы вклада и начисленных банком %\n");
         float deposit = 300000.00f;
-        float depositPercentMin = deposit * 0.05f;
-        float depositPercentMid = deposit * 0.07f;
-        float depositPercentMax = deposit * 0.1f;
+        float percent = 0.00f;
         if (deposit < 100000) {
-            System.out.println("Сумма вклада: " + deposit +
-                    "\nНачисленный процент: " + depositPercentMin +
-                    "\nIтоговая сумма: " + (deposit + depositPercentMin));
+        	percent = deposit * 0.05f;
         } else if (deposit >= 100000 && deposit >= 300000) {
-            System.out.println("Сумма вклада: " + deposit +
-                    "\nНачисленный процент: " + depositPercentMid +
-                    "\nIтоговая сумма: " + (deposit + depositPercentMid));
+            percent = deposit * 0.07f;
         } else  if (deposit < 100000) {
-            System.out.println("Сумма вклада: " + deposit +
-                    "\nНачисленный процент: " + depositPercentMax +
-                    "\nIтоговая сумма: " + (deposit + depositPercentMax));
+            percent = deposit * 0.1f;
         }
+        System.out.println("Сумма вклада: " + deposit +
+        	"\nНачисленный %: " + percent +
+        	"\nCумма с %: " + deposit + percent);
 
-                System.out.println("\n7. Определение оценки по предметам.\n");
+		System.out.println("\n7. Определение оценки по предметам.\n");
         int percentProg = 91;
-        int markProg = 0;
+        int markProg = 5;
         if(percentProg <= 60) {
             markProg = 2;
         } else if(percentProg > 60 && percentProg <= 73) {
                 markProg = 3;
         } else if(percentProg > 73 && percentProg <= 91){
             markProg = 4;
-        } else {
-            markProg = 5;
         }
         int percentHist = 59;
-        int markHist = 0;
+        int markHist = 5;
         if(percentHist <= 60) {
             markHist = 2;
         } else if(percentHist > 60 && percentHist <= 73) {
             markHist = 3;
         } else if(percentHist > 73 && percentHist <= 91){
             markHist = 4;
-        } else {
-            markHist = 5;
         }
-        int midMark = (markHist + markProg)/2;
-        int midPercent = (percentHist + percentProg)/2;
+        int avgMark = (markHist + markProg) / 2;
+        int avgPercent = (percentHist + percentProg) / 2;
         System.out.println(markHist + " — балл по истории\n" + markProg +
                 " — балл по программированию\n" +
-                "Cредний балл оценок по предметам: " + midMark +
-                "\nCредний % по предметам: " + midPercent + "%");
+                "Cредний балл оценок по предметам: " + avgMark +
+                "\nCредний % по предметам: " + avgPercent + "%");
 
         System.out.println("\n8. Расчет прибыли за год.\n");
         int rent = 5000;
         int proceeds = 13000;
         int cost = 9000;
-        int profit = proceeds - rent - cost;
-        int yearProfit = profit * 12;
+        int yearProfit = (proceeds - rent - cost) * 12;
         if (yearProfit > 0) {
             System.out.println("Прибыль за год: " + '+' + yearProfit);
         } else {
