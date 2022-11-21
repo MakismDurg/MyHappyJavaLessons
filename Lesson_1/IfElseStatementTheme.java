@@ -45,14 +45,14 @@ public class IfElseStatementTheme {
         if (numN != 0) {
             System.out.println("У нас есть число, равное " + numN + ". Оно:");
             if (numN > 0) {
-                System.out.println("	- положительное");
+                System.out.println("    - положительное");
             } else {
-                System.out.println("	- отрицательное");
+                System.out.println("    - отрицательное");
             }
             if (numN % 2 == 0) {
-                System.out.println("	- чётное");
+                System.out.println("    - чётное");
             } else {
-                System.out.println("	- нечётное");
+                System.out.println("    - нечётное");
             }
         } else {
             System.out.println("У нас есть число, равное 0");
@@ -85,28 +85,26 @@ public class IfElseStatementTheme {
         if (symbol >= '0' && symbol <= '9') {
             System.out.println("Символ " + symbol + " является цифрой.");
         } else if (symbol >= 'A' && symbol <= 'Z') {
-        	System.out.println("Символ " + symbol + " является заглавной буквой.");
+            System.out.println("Символ " + symbol + " является заглавной буквой.");
         } else if (symbol >= 'a' && symbol <= 'z') {
-        	System.out.println("Символ " + symbol + " является строчной буквой.");
+            System.out.println("Символ " + symbol + " является строчной буквой.");
         } else {
             System.out.println("Символ " + symbol + " не является буквой или числом.");
         }
 
         System.out.println("\n6. Подсчет суммы вклада и начисленных банком %\n");
         float deposit = 300000.00f;
-        float percent = 0.00f;
+        float percent = deposit * 0.1f;
         if (deposit < 100000) {
-        	percent = deposit * 0.05f;
+            percent = deposit * 0.05f;
         } else if (deposit >= 100000 && deposit >= 300000) {
             percent = deposit * 0.07f;
-        } else  if (deposit < 100000) {
-            percent = deposit * 0.1f;
         }
         System.out.println("Сумма вклада: " + deposit +
-        	"\nНачисленный %: " + percent +
-        	"\nCумма с %: " + deposit + percent);
+            "\nНачисленный %: " + percent +
+            "\nCумма с %: " + deposit + percent);
 
-		System.out.println("\n7. Определение оценки по предметам.\n");
+        System.out.println("\n7. Определение оценки по предметам.\n");
         int percentProg = 91;
         int markProg = 5;
         if(percentProg <= 60) {
@@ -143,8 +141,7 @@ public class IfElseStatementTheme {
             System.out.println("Прибыль за год: " + yearProfit);
         }
 
-        System.out.println("\n9. Подсчет количества банкнот.\n");
-        int withdrawal = 567;
+      int withdrawal = 567;
         int onesInStock = 50;
         int tensInStock = 5;
         int hundsInStock = 10;
@@ -154,53 +151,55 @@ public class IfElseStatementTheme {
         int withdrawnOnes = 0;
         int withdrawnTens = 0;
         int withdrawnHunds = 0;
-        int missingHunds = needHunds - hundsInStock;
         int missinTens = needTens - tensInStock;
         int compensationTensByOnes = missinTens * 10;
+        int missingHunds = needHunds - hundsInStock;
         int compensationHundsByTens = missingHunds * 10;
         int compensationHundsByOnes = (needTens + compensationHundsByTens - tensInStock) * 10;
-        if (needOnes <= onesInStock && needTens <= tensInStock && needHunds <= hundsInStock) {
+        if (needOnes <= onesInStock) {
             withdrawnOnes = needOnes;
+            onesInStock = onesInStock - withdrawnOnes;
+        } else {
+            System.out.println("Не хватило долларовых купюр");
+        }
+        if (needTens <= tensInStock) {
             withdrawnTens = needTens;
+            tensInStock = tensInStock - withdrawnTens;
+        } else if (compensationTensByOnes <= onesInStock) {
+            withdrawnOnes = withdrawnOnes + compensationTensByOnes;
+            withdrawnTens = tensInStock;
+        } else {
+            System.out.println("Не  хватило десятидолларовых купюр");
+        }
+        if (needHunds <= hundsInStock) {
             withdrawnHunds = needHunds;
             System.out.println("\nСумма к выдаче: " + withdrawal +
                     "\nВыдача будет произведена в банкнотах номиналом: 1$, 10$, 100$" +
-                    "\nТребуемое количество банкнот:\n" +
+                    "\nКоличество выданных купюр:\n" +
                     withdrawnOnes + " - 1$" + "\n" +
                     withdrawnTens + " - 10$" + "\n" +
                     withdrawnHunds + " - 100$");
-        } else if (needOnes < onesInStock && needTens + compensationHundsByTens <= tensInStock && needHunds > hundsInStock) {
-            withdrawnOnes = needOnes;
-            withdrawnTens = needTens + compensationHundsByTens;
+        } else if (compensationHundsByTens <= tensInStock) {
             withdrawnHunds = hundsInStock;
+            withdrawnTens = withdrawnTens + compensationHundsByTens;
             System.out.println("\nСумма к выдаче: " + withdrawal +
                     "\nВыдача будет произведена в банкнотах номиналом: 1$, 10$, 100$" +
-                    "\nТребуемое количество банкнот:\n" +
+                    "\nКоличество выданных купюр:\n" +
                     withdrawnOnes + " - 1$" + "\n" +
                     withdrawnTens + " - 10$" + "\n" +
                     withdrawnHunds + " - 100$");
-        } else if (needOnes + compensationHundsByOnes <= onesInStock && needTens + compensationHundsByTens > tensInStock && needHunds > hundsInStock) {
-            withdrawnOnes = needOnes + compensationHundsByOnes;
-            withdrawnTens = tensInStock;
+        } else if (compensationHundsByOnes <= onesInStock) {
             withdrawnHunds = hundsInStock;
-            System.out.println("\nСумма к выдаче: " + withdrawal +
-                    "\nВыдача будет произведена в банкнотах номиналом: 1$, 10$, 100$" +
-                    "\nТребуемое количество банкнот:\n" +
-                    withdrawnOnes + " - 1$" + "\n" +
-                    withdrawnTens + " - 10$" + "\n" +
-                    withdrawnHunds + " - 100$");
-        } else if (needOnes + compensationTensByOnes <= onesInStock && needTens > tensInStock && needHunds <= hundsInStock) {
-            withdrawnOnes = needOnes + compensationTensByOnes;
             withdrawnTens = tensInStock;
-            withdrawnHunds = needHunds;
+            withdrawnOnes = withdrawnOnes + compensationHundsByOnes;
             System.out.println("\nСумма к выдаче: " + withdrawal +
                     "\nВыдача будет произведена в банкнотах номиналом: 1$, 10$, 100$" +
-                    "\nТребуемое количество банкнот:\n" +
+                    "\nКоличество выданных купюр:\n" +
                     withdrawnOnes + " - 1$" + "\n" +
                     withdrawnTens + " - 10$" + "\n" +
                     withdrawnHunds + " - 100$");
         } else {
-            System.out.println("Запрашиваемая сумма не может быть выдана. Пожалуйста, выберите другую сумму.");
+            System.out.println("Не  хватило стодолларовых купюр");
         }
     }
 }
