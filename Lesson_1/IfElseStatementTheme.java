@@ -159,16 +159,18 @@ public class IfElseStatementTheme {
         } else {
             withdrawnHunds = hundsInStock;
             hundsByTens = (needHunds - hundsInStock) * 10;
+            needTens += hundsByTens;
         }
         int tensByOnes = 0;
-        if (hundsByTens + needTens <= tensInStock) {
-            withdrawnTens = hundsByTens + needTens;
+        if (needTens <= tensInStock) {
+            withdrawnTens = needTens;
         } else {
             withdrawnTens = tensInStock;
-            tensByOnes = (needTens + hundsByTens - tensInStock) * 10;
+            tensByOnes = (needTens - tensInStock) * 10;
+            needOnes += tensByOnes;
         }
-        if (tensByOnes + needOnes <= onesInStock) {
-            withdrawnOnes = tensByOnes + needOnes;
+        if (needOnes <= onesInStock) {
+            withdrawnOnes = needOnes;
             System.out.println("Cумма будет выдана в количестве купюр номиналом:\n" +
                     withdrawnHunds + " — 100$\n" +
                     withdrawnTens + " — 10$\n" +
