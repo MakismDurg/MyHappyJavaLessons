@@ -152,26 +152,24 @@ public class IfElseStatementTheme {
         int withdrawnOnes = 0;
         int withdrawnTens = 0;
         int withdrawnHunds = 0;
-        int hundsByTens = 0;
         System.out.println("Сумма к выдаче: " + withdrawal);
         if (needHunds <= hundsInStock) {
             withdrawnHunds = needHunds;
         } else {
             withdrawnHunds = hundsInStock;
-            hundsByTens = (needHunds - hundsInStock) * 10;
+            int hundsByTens = (needHunds - hundsInStock) * 10;
             needTens += hundsByTens;
         }
-        int tensByOnes = 0;
         if (needTens <= tensInStock) {
             withdrawnTens = needTens;
         } else {
             withdrawnTens = tensInStock;
-            tensByOnes = (needTens - tensInStock) * 10;
+            int tensByOnes  = (needTens - tensInStock) * 10;
             needOnes += tensByOnes;
         }
         if (needOnes <= onesInStock) {
             withdrawnOnes = needOnes;
-            System.out.println("Cумма будет выдана в количестве купюр номиналом:\n" +
+            System.out.println("\nCумма будет выдана в количестве купюр номиналом:\n" +
                     withdrawnHunds + " — 100$\n" +
                     withdrawnTens + " — 10$\n" +
                     withdrawnOnes + " — 1$\n");
