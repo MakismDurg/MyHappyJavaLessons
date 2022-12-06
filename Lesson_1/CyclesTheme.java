@@ -15,22 +15,22 @@ public class CyclesTheme {
         System.out.println("В промежутке [-10, 21] сумма четных чисел = " + evenNum + ", а нечетных = " + oddNum);
 
         System.out.println("\n2. Вывод чисел в интервале (min и max) в порядке убывания");
-        int num1 = 10;
-        int num2 = 5;
+        int num1 = -10;
+        int num2 = -5;
         int num3 = -1;
         int max = num1;
         int min = num3;
-        if (num2 > num1 && num2 > num3) {
+        if (num2 > num1) {
             max = num2;
         }
-        if (num3 > num1 && num3 > num2) {
+        if (num3 > num2) {
             max = num3;
         }
-        if (num1 < num2 && num1 < num3) {
-            min = num1;
-        }
-        if (num2 < num1 && num2 < num3) {
+        if (num2 < num3) {
             min = num2;
+        }
+        if (num1 < num2) {
+            min = num1;
         }
         for (int i = max - 1; i > min; i--) {
             System.out.print(i + " ");
@@ -153,23 +153,22 @@ public class CyclesTheme {
 
         System.out.println("\n\n9. Определение, является ли число счастливым");
         num = 123606;
-        copyNum = num;
         int sumRightPart = 0;
         int sumLeftPart = 0;
-        int rightPart = num % 1000;
         int leftPart = num / 1000;
-        for (i = 0; i < 6; i++) {
-            int digit = copyNum % 10;
-            copyNum /= 10;
-            if (i < 3) {
-                sumRightPart = sumRightPart + digit;
-            }
-            if (i >= 3) {
-                sumLeftPart = sumLeftPart + digit;
-            }
+        int rightPart = num % 1000;
+        int copyLeftPart = leftPart;
+        int copyRightPart = rightPart;
+        for (i = 0; i < 3; i++) {
+            int digit = leftPart % 10;
+            sumLeftPart += digit;
+            leftPart /= 10;
+            digit = rightPart % 10;
+            sumRightPart += digit;
+            rightPart /= 10;
         }
         System.out.printf("Сумма цифр %d = %d\nСумма цифр %d = %d\n",
-                rightPart, sumRightPart, leftPart, sumLeftPart);
+                copyRightPart, sumRightPart, copyLeftPart, sumLeftPart);
         if (sumRightPart == sumLeftPart) {
             System.out.println("Число является счастливым");
         } else {
