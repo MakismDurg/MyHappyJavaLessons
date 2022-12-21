@@ -1,22 +1,18 @@
 public class Calculator {
     public static void main(String[] args) {
-        int a = 370;
-        int b = 40;
+        int a = 390;
+        int b =  50;
         char sign = '%';
         double result = 0;
-        if (sign == 43) {
+        if (sign == '+') {
             result = a + b;
-        }
-        if (sign == 45) {
+        } else if (sign == '-') {
             result = a - b;
-        }
-        if (sign == 42) {
+        } else if (sign == '*') {
             result = a * b;
-        }
-        if (sign == 47) {
+        } else if (sign == '/') {
             result = (double) a / b;
-        }
-        if (sign == 94) {
+        } else if (sign == '^') {
             result = a;
             int exponent = b;
             while (exponent > 1) {
@@ -24,7 +20,7 @@ public class Calculator {
                 exponent--;
             }
         }
-        if (sign == 37) {
+        if (sign == '%') {
             result = (double) a / 100 * b;
         }
         System.out.printf("%d %c %d = ", a, sign, b);
