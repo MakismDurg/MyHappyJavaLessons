@@ -10,7 +10,7 @@ public class MyFirstGame {
             }
             guessNum++;
              if (guessNum > 100) {
-                guessNum = 0;
+                guessNum = 1;
             }
         }
         System.out.printf("It's God damned right, %d!", guessNum);
