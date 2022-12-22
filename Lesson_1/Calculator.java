@@ -1,8 +1,8 @@
 public class Calculator {
     public static void main(String[] args) {
-        int a = 390;
-        int b =  50;
-        char sign = '%';
+        int a = 3;
+        int b =  4;
+        char sign = '^';
         double result = 0;
         if (sign == '+') {
             result = a + b;
@@ -14,15 +14,14 @@ public class Calculator {
             result = (double) a / b;
         } else if (sign == '^') {
             result = a;
-            int exponent = b;
-            while (exponent > 1) {
+            for (int exponent = b; exponent > 1; exponent--) {
                 result *= a;
-                exponent--;
             }
         }
         if (sign == '%') {
-            result = (double) a / 100 * b;
+            result = a % b;
         }
+        
         System.out.printf("%d %c %d = ", a, sign, b);
         if (result % 1 == 0) {
             System.out.println((int) result);
