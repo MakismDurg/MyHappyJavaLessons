@@ -16,6 +16,7 @@ public class Wolf {
     void sit() {
         System.out.println("Он сидит");
     }
+    
     void howl() {
         System.out.println("Он воет");
     }
