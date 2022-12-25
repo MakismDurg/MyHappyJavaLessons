@@ -1,31 +1,74 @@
 public class Wolf {
-    String name;
-    String gender;
-    int age;
-    double weight;
-    String colour;
+    private String name;
+    private String gender;
+    private int age;
+    private double weight;
+    private String colour;
 
-    void go() {
+    public void setName(String name) {
+        this.name = name;
+    }
+ 
+    public String getName() {
+        return name;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+ 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setAge(int age) {
+        if(age < 8 && age > -1) {
+            this.age = age;
+        } else {
+        	System.out.println("Некорректный возраст");
+        }
+    }
+ 
+    public int getAge() {
+        return age;
+    }
+
+     public void setWeight(double weight) {
+        this.weight = weight;
+    }
+ 
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setColour(String colour) {
+        this.colour = colour;
+    }
+ 
+    public String getColour() {
+        return colour;
+    }
+
+    public void go() {
         System.out.println("Он ходит");
     }
 
-    void run() {
+    public void run() {
         System.out.println("Он бегает");
     }
 
-    void sit() {
+    public void sit() {
         System.out.println("Он сидит");
     }
-    
-    void howl() {
+    public void howl() {
         System.out.println("Он воет");
     }
 
-    void hunt() {
+    public void hunt() {
         System.out.println("Он охотится");
     }
 
-    boolean isCircusPerform() {
+    public boolean isCircusPerform() {
         System.out.println("Волк слабее льва и тигра, но в цирке не выступает.");
         return true;
     }
