@@ -60,6 +60,7 @@ public class Wolf {
     public void sit() {
         System.out.println("Он сидит");
     }
+    
     public void howl() {
         System.out.println("Он воет");
     }
