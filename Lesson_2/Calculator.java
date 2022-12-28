@@ -1,5 +1,4 @@
 public class Calculator {
-
     private int a;
     private int b;
     private char sign;
@@ -31,12 +30,9 @@ public class Calculator {
             case '%':
                 result = a % b;
                 break;
-            default:
-                System.out.println("Введён неверный знак. " +
-                        "Возможны только вычисления со знаками +, -, *, /, ^, %.");
-                break;
         }
     }
+
     public void setA(int a) {
         this.a = a;
     }
