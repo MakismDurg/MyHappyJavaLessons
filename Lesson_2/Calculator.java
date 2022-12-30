@@ -2,9 +2,25 @@ public class Calculator {
     private int a;
     private int b;
     private char sign;
-    double result = 1;
+    private double result;
 
-    public void operation() {
+    public void setA(int a) {
+        this.a = a;
+    }
+
+    public void setB(int b) {
+        this.b = b;
+    }
+
+    public void setSign(char sign) {
+        this.sign = sign;
+    }
+
+    public double getResult() {
+        return result;
+    }
+
+    public void operate() {
         switch (sign) {
             case '+':
                 result = a + b;
@@ -20,6 +36,7 @@ public class Calculator {
                 break;
             case '^':
                 if (b == 0) {
+                    result = 1;
                     break;
                 }
                 result = a;
@@ -31,21 +48,5 @@ public class Calculator {
                 result = a % b;
                 break;
         }
-    }
-
-    public void setA(int a) {
-        this.a = a;
-    }
-
-    public void setB(int b) {
-        this.b = b;
-    }
-
-    public void setSign(char sign) {
-        this.sign = sign;
-    }
-
-    public double getResult () {
-        return result;
     }
 }

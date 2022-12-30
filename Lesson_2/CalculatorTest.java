@@ -2,34 +2,31 @@ import java.util.Scanner;
 
 public class CalculatorTest {
     public static void main(String[] args) {
-        Scanner numInsert = new Scanner(System.in);
-        Scanner symbolInsert = new Scanner(System.in);
+        Scanner console = new Scanner(System.in);
         Calculator calculator = new Calculator();
-        boolean stop = false;
-        while (!stop) {
+        String option = "yes";
+        while (option.equals("yes")) {
             System.out.println("Введите первое число: ");
-            calculator.setA(numInsert.nextInt());
+            calculator.setA(console.nextInt());
             System.out.println("Введите знак вычисления: ");
-            calculator.setSign(symbolInsert.nextLine().charAt(0));
+            calculator.setSign(console.next().charAt(0));
             System.out.println("Введите второе число: ");
-            calculator.setB(numInsert.nextInt());
-            calculator.operation();
-            System.out.print("Результат вычисления = ");
+            calculator.setB(console.nextInt());
+            calculator.operate();
+            System.out.println("Результат вычисления = ");
             if (calculator.getResult() % 1 == 0) {
                 System.out.println((int)calculator.getResult());
             } else {
                 System.out.println(calculator.getResult());
             }
-            while (true) {
-                System.out.println("Хотите продолжить вычисления? [yes/no]");
-                String askToStop = symbolInsert.nextLine();
-                if (askToStop.equals("yes")) {
-                    break;
-                } else if (askToStop.equals("no")) {
-                    stop = true;
+            System.out.println("Хотите продолжить вычисления? [yes/no]");
+            option = console.next();
+            while (!option.equals("no")) {
+                if (option.equals("yes")) {
                     break;
                 } else {
-                    System.out.print("Некорректный ответ. ");
+                    System.out.print("Некорректный ответ. Хотите продолжить вычисления? [yes/no]\n");
+                    option = console.next();
                 }
             }
         }
