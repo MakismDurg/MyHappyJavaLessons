@@ -20,7 +20,7 @@ public class Calculator {
         return result;
     }
 
-    public void operate() {
+    public void calculate() {
         switch (sign) {
             case '+':
                 result = a + b;
@@ -35,6 +35,11 @@ public class Calculator {
                 result = (double) a / b;
                 break;
             case '^':
+                /* Не очень понял, почему нужно убрать эту проверку по ОС от 30 декабря. 
+                Тут прописан случай, когда любое число a возводится в степень b = 0.
+                Будет однозначно result = 1 и тогда заходить в цикл не нужно.
+                Программа на этом этапе срабатывает корректно.
+                */ 
                 if (b == 0) {
                     result = 1;
                     break;
