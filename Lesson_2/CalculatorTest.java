@@ -13,18 +13,21 @@ public class CalculatorTest {
             System.out.println("Введите второе число: ");
             calculator.setB(console.nextInt());
             calculator.calculate();
-            double showResult = calculator.getResult();
-            System.out.println("Результат вычислений =" + (showResult % 1 == 0 ?
-                    "\n" + (int) showResult : "\n" + showResult ));
+            System.out.println("Результат вычислений =");
+            double result = calculator.getResult();
+            if (result % 1 == 0) {
+                System.out.println((int) result);
+            } else {
+                System.out.println(result);
+            }
             System.out.println("Хотите продолжить вычисления? [yes/no]");
             option = console.next();
             while (!option.equals("yes")) {
                 if (option.equals("no")) {
                     break;
-                } {
-                    System.out.print("Некорректный ответ. Хотите продолжить вычисления? [yes/no]\n");
-                    option = console.next();
                 }
+                System.out.print("Некорректный ответ. Хотите продолжить вычисления? [yes/no]\n");
+                option = console.next();
             }
         } while (option.equals("yes"));
         System.out.println("Расчёты завершены.");

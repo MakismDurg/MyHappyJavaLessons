@@ -35,17 +35,8 @@ public class Calculator {
                 result = (double) a / b;
                 break;
             case '^':
-                /* Не очень понял, почему нужно убрать эту проверку по ОС от 30 декабря. 
-                Тут прописан случай, когда любое число a возводится в степень b = 0.
-                Будет однозначно result = 1 и тогда заходить в цикл не нужно.
-                Программа на этом этапе срабатывает корректно.
-                */ 
-                if (b == 0) {
-                    result = 1;
-                    break;
-                }
-                result = a;
-                for (int exponent = b; exponent > 1; exponent--) {
+                result = 1;
+                for (int exponent = b; exponent > 0; exponent--) {
                     result *= a;
                 }
                 break;
