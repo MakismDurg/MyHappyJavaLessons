@@ -9,8 +9,8 @@ public class GuessNumber {
         this.player2 = player2;
     }
 
-    public void letsPlay() {
-        int secretNum = (int) (Math.random() * 100 - 1);
+    public void launch() {
+        int secretNum = (int) (Math.random() * 100 + 1);
         Scanner console = new Scanner(System.in);
 
         while (true) {

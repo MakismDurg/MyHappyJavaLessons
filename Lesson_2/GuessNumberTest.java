@@ -14,11 +14,11 @@ public class GuessNumberTest {
         String option;
 
         do {
-            game.letsPlay();
+            game.launch();
             System.out.println("\nХотите сыграть повторно? [yes/no]");
             option = console.nextLine();
             while (!option.equals("yes")) {
-                if (option.equals("no")){
+                if (option.equals("no")) {
                     break;
                 } else {
                     System.out.println("Введите yes или no");
@@ -26,6 +26,6 @@ public class GuessNumberTest {
                 }
             }
         } while (option.equals("yes"));
-        System.out.println("GAME OVER");
+        System.out.println("Всем спасибо, до новых встреч.\nБерегите себя и своих близких.");
     }
 }
