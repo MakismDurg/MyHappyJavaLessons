@@ -4,15 +4,10 @@ import java.util.Arrays;
 
 public class ArrayTheme {
     public static void main(String[] args) {
-        /*TODO
-         *  вывод значений массива дублируется - вынеси его в отдельный метод
-         */
         System.out.println("1. Реверс значений массива");
         int[] reversedNums = {4, 6, 1, 5, 2, 7, 3};
         int len = reversedNums.length;
-        for (int num : reversedNums) {
-            System.out.print(num + " ");
-        }
+        showInts(reversedNums);
 
         System.out.println("\nРеверсивный массив:");
         int arrayMiddle = len / 2;
@@ -21,15 +16,11 @@ public class ArrayTheme {
             reversedNums[i] = reversedNums[len - (i + 1)];
             reversedNums[len - (i + 1)] = numSaver;
         }
-
-        for (int num : reversedNums) {
-            System.out.print(num + " ");
-        }
+        showInts(reversedNums);
 
         System.out.println("\n\n2. Вывод произведения элементов массива");
         int[] multipliers = new int[10];
         len = multipliers.length;
-
         for (int i = 0; i < len; i++) {
             multipliers[i] = i;
         }
@@ -45,7 +36,7 @@ public class ArrayTheme {
         System.out.println("\n\n3. Удаление элементов массива");
         double[] randomNums = new double[15];
         len = randomNums.length;
-
+        arrayMiddle = len / 2;
         for (int i = 0; i < len; i++) {
             randomNums[i] = Math.random();
             System.out.printf("% .3f", randomNums[i]);
@@ -141,13 +132,20 @@ public class ArrayTheme {
             }
         }
 
-        System.out.println("Изначальный массив:");
-        for (String string : strings) {
-            System.out.print(string + " ");
-        }
-
+        System.out.println("\nИзначальный массив:");
+        showStrings(strings);
         System.out.println("\nМассив с копированным строками:");
-        for (String string : copyStrings) {
+        showStrings(copyStrings);
+    }
+
+    private static void showInts(int[] ints) {
+        for (int num : ints) {
+            System.out.print(num + " ");
+        }
+    }
+
+    private static void showStrings(String[] strings) {
+        for (String string : strings) {
             System.out.print(string + " ");
         }
     }
