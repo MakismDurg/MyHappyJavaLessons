@@ -5,18 +5,19 @@ import java.util.Arrays;
 public class ArrayTheme {
     public static void main(String[] args) {
         System.out.println("1. Реверс значений массива");
-        int[] reversedNums = {4, 6, 1, 5, 2, 7, 3};
-        int len = reversedNums.length;
-        showInts(reversedNums);
+        int[] numsForReverse = {4, 6, 1, 5, 2, 7, 3};
+        int len = numsForReverse.length;
+        showInts(numsForReverse);
 
         System.out.println("\nРеверсивный массив:");
         int arrayMiddle = len / 2;
         for (int i = 0; i < arrayMiddle; i++) {
-            int numSaver = reversedNums[i];
-            reversedNums[i] = reversedNums[len - (i + 1)];
-            reversedNums[len - (i + 1)] = numSaver;
+            len--;
+            int temp = numsForReverse[i];
+            numsForReverse[i] = numsForReverse[len];
+            numsForReverse[len] = temp;
         }
-        showInts(reversedNums);
+        showInts(numsForReverse);
 
         System.out.println("\n\n2. Вывод произведения элементов массива");
         int[] multipliers = new int[10];
@@ -28,8 +29,8 @@ public class ArrayTheme {
         int result = 1;
         for (int i = 1; i < len - 1; i++) {
             result *= i;
-            System.out.print(i);
-            System.out.print(multipliers[i] < len - 2 ? " * " : " = " + result);
+            String showResult = multipliers[i] < len - 2 ? " * " : " = " + result;
+            System.out.print(i + showResult);
         }
         System.out.printf("\n0 и 9 элементы массива: %d, %d", multipliers[0], multipliers[9]);
 
@@ -39,10 +40,7 @@ public class ArrayTheme {
         arrayMiddle = len / 2;
         for (int i = 0; i < len; i++) {
             randomNums[i] = Math.random();
-            System.out.printf("% .3f", randomNums[i]);
-            if (i == arrayMiddle) {
-                System.out.println();
-            }
+            rangeBreak(randomNums, i, arrayMiddle);
         }
         System.out.println("\n");
 
@@ -52,10 +50,7 @@ public class ArrayTheme {
                 randomNums[i] = 0;
                 zeroedElements++;
             }
-            System.out.printf("% .3f", randomNums[i]);
-            if (i == arrayMiddle) {
-                System.out.println();
-            }
+            rangeBreak(randomNums, i, arrayMiddle);
         }
         System.out.println("\nКоличество обнулённых ячеек: " + zeroedElements);
 
@@ -66,9 +61,9 @@ public class ArrayTheme {
             alphabet[i] = (char) (i + 'A');
         }
 
-        String stringSaver = "";
+        String reverseAlphabet = "";
         for (int i = len - 1; i >= 0; i--) {
-            System.out.println(stringSaver += alphabet[i]);
+            System.out.println(reverseAlphabet += alphabet[i]);
         }
 
         System.out.println("\n5. Генерация уникальных чисел");
@@ -76,15 +71,15 @@ public class ArrayTheme {
         len = uniqueNums.length;
         for (int i = 0; i < len; i++) {
             int generatedNum = (int) (Math.random() * 40 + 60);
-            boolean numEqual = false;
+            boolean isUniqueNum = false;
             for (int j = 0; j < i; j++) {
                 if (uniqueNums[j] == generatedNum) {
-                    numEqual = true;
+                    isUniqueNum = true;
                     break;
                 }
             }
             uniqueNums[i] = generatedNum;
-            if (numEqual) {
+            if (isUniqueNum) {
                 i--;
             }
         }
@@ -103,28 +98,31 @@ public class ArrayTheme {
         }
 
         System.out.println("\n\n6. Сдвиг элементов массива");
-        String[] strings = {"   ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
-        len = strings.length;
-        int lenCopy = 0;
-        for (int i = 0; i < len; i++) {
-            if (!strings[i].isBlank()) {
-                lenCopy++;
+        String[] srcStrings = {"   ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        len = srcStrings.length;
+        int countNonBlankStrings = 0;
+        for (String string : srcStrings)  {
+            if (!string.isBlank()) {
+                countNonBlankStrings++;
             }
         }
-
-        String[] copyStrings = new String[lenCopy];
+        /*TODO
+        для решения задачи достаточно двух мест, где будет вызываться метод isBlank():
+        для подсчета длины нового массива; для проверки копируемой последовательности на blank
+        */
+        String[] destStrings = new String[countNonBlankStrings];
         int srcPos = 0;
         for (int i = 0; i < len; i++) {
-            if (!strings[i].isBlank()) {
-                if (i == 0 || strings[i - 1].isBlank()) {
+            if (!srcStrings[i].isBlank()) {
+                if (i == 0 || srcStrings[i - 1].isBlank()) {
                     srcPos = i;
                 }
-                if (i == len - 1 || strings[i + 1].isBlank()) {
+                if (i == len - 1 || srcStrings[i + 1].isBlank()) {
                     int length = i - srcPos + 1;
-                    for (int j = 0; j < lenCopy; j++) {
-                        if (copyStrings[j] == null) {
+                    for (int j = 0; j < countNonBlankStrings; j++) {
+                        if (destStrings[j] == null) {
                             int destPos = j;
-                            System.arraycopy(strings, srcPos, copyStrings, destPos, length);
+                            System.arraycopy(srcStrings, srcPos, destStrings, destPos, length);
                             break;
                         }
                     }
@@ -133,9 +131,9 @@ public class ArrayTheme {
         }
 
         System.out.println("\nИзначальный массив:");
-        showStrings(strings);
+        showStrings(srcStrings);
         System.out.println("\nМассив с копированным строками:");
-        showStrings(copyStrings);
+        showStrings(destStrings);
     }
 
     private static void showInts(int[] ints) {
@@ -147,6 +145,13 @@ public class ArrayTheme {
     private static void showStrings(String[] strings) {
         for (String string : strings) {
             System.out.print(string + " ");
+        }
+    }
+
+    private static void rangeBreak(double[] randomNums, int i, int arrayMiddle) {
+        System.out.printf("% .3f", randomNums[i]);
+        if (i == arrayMiddle) {
+            System.out.println();
         }
     }
 }
