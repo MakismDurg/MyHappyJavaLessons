@@ -101,32 +101,30 @@ public class ArrayTheme {
         String[] srcStrings = {"   ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
         len = srcStrings.length;
         int countNonBlankStrings = 0;
-        for (String string : srcStrings)  {
+        for (String string : srcStrings) {
             if (!string.isBlank()) {
                 countNonBlankStrings++;
             }
         }
-        /*TODO
-        для решения задачи достаточно двух мест, где будет вызываться метод isBlank():
-        для подсчета длины нового массива; для проверки копируемой последовательности на blank
-        */
         String[] destStrings = new String[countNonBlankStrings];
         int srcPos = 0;
+        int length = 0;
         for (int i = 0; i < len; i++) {
             if (!srcStrings[i].isBlank()) {
-                if (i == 0 || srcStrings[i - 1].isBlank()) {
+                if (length == 0) {
                     srcPos = i;
                 }
-                if (i == len - 1 || srcStrings[i + 1].isBlank()) {
-                    int length = i - srcPos + 1;
-                    for (int j = 0; j < countNonBlankStrings; j++) {
-                        if (destStrings[j] == null) {
-                            int destPos = j;
-                            System.arraycopy(srcStrings, srcPos, destStrings, destPos, length);
-                            break;
-                        }
+                length++;
+            } else {
+                for (int j = 0; j < countNonBlankStrings; j++) {
+                    if (destStrings[j] == null) {
+                        int destPos = j;
+                        System.arraycopy(srcStrings, srcPos, destStrings, destPos, length);
+                        break;
                     }
                 }
+                srcPos = 0;
+                length = 0;
             }
         }
 
