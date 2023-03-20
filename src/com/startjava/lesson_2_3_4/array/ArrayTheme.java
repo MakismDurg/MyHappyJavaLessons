@@ -1,7 +1,5 @@
 package com.startjava.lesson_2_3_4.array;
 
-import java.util.Arrays;
-
 public class ArrayTheme {
     public static void main(String[] args) {
         System.out.println("1. Реверс значений массива");
@@ -26,11 +24,11 @@ public class ArrayTheme {
             multipliers[i] = i;
         }
 
-        int result = 1;
+        int product = 1;
         for (int i = 1; i < len - 1; i++) {
-            result *= i;
-            String showResult = multipliers[i] < len - 2 ? " * " : " = " + result;
-            System.out.print(i + showResult);
+            product *= i;
+            String result = multipliers[i] < len - 2 ? " * " : " = " + product;
+            System.out.print(i + result);
         }
         System.out.printf("\n0 и 9 элементы массива: %d, %d", multipliers[0], multipliers[9]);
 
@@ -40,9 +38,8 @@ public class ArrayTheme {
         arrayMiddle = len / 2;
         for (int i = 0; i < len; i++) {
             randomNums[i] = Math.random();
-            rangeBreak(randomNums, i, arrayMiddle);
         }
-        System.out.println("\n");
+        lineBreak(randomNums, arrayMiddle, len);
 
         int zeroedElements = 0;
         for (int i = 0; i < len; i++) {
@@ -50,15 +47,15 @@ public class ArrayTheme {
                 randomNums[i] = 0;
                 zeroedElements++;
             }
-            rangeBreak(randomNums, i, arrayMiddle);
         }
         System.out.println("\nКоличество обнулённых ячеек: " + zeroedElements);
+        lineBreak(randomNums, arrayMiddle, len);
 
         System.out.println("\n\n4. Вывод элементов массива лесенкой в обратном порядке");
         char[] alphabet = new char[26];
         len = alphabet.length;
         for (int i = 0; i < len; i++) {
-            alphabet[i] = (char) (i + 'A');
+            alphabet[i] = (char) ('A' + i);
         }
 
         String reverseAlphabet = "";
@@ -146,10 +143,12 @@ public class ArrayTheme {
         }
     }
 
-    private static void rangeBreak(double[] randomNums, int i, int arrayMiddle) {
-        System.out.printf("% .3f", randomNums[i]);
-        if (i == arrayMiddle) {
-            System.out.println();
+    private static void lineBreak(double[] randomNums, int arrayMiddle, int len) {
+        for (int i = 0; i < len; i++) {
+            System.out.printf("% .3f", randomNums[i]);
+            if (i == arrayMiddle) {
+                System.out.println();
+            }
         }
     }
 }
