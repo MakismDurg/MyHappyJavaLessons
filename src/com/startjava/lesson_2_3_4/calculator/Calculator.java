@@ -37,10 +37,7 @@ public class Calculator {
                 result = (double) a / b;
                 break;
             case '^':
-                result = 1;
-                for (int exponent = b; exponent > 0; exponent--) {
-                    result *= a;
-                }
+                result = Math.pow(a, b);
                 break;
             case '%':
                 result = (double) a / 100 * b;

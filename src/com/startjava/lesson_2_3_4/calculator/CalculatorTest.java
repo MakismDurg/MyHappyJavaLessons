@@ -9,33 +9,35 @@ public class CalculatorTest {
         Calculator calculator = new Calculator();
         String option;
         do {
-            System.out.println("Введите первое число: ");
-            calculator.setA(console.nextInt());
-            System.out.println("Введите знак вычисления: ");
-            calculator.setSign(console.next().charAt(0));
-            System.out.println("Введите второе число: ");
-            calculator.setB(console.nextInt());
-
+            System.out.print("Введите математическое выражение: ");
+            String mathExpression = console.nextLine();
+            String[] splittedExpression = mathExpression.split(" ");
+            calculator.setA(Integer.parseInt(splittedExpression[0]));
+            calculator.setSign(splittedExpression[1].charAt(0));
+            calculator.setB(Integer.parseInt(splittedExpression[2]));
             calculator.calculate();
-
-            System.out.println("Результат вычислений =");
+            System.out.print("Результат вычислений = ");
             double result = calculator.getResult();
             if (result % 1 == 0) {
                 System.out.println((int) result);
             } else {
-                System.out.println(result);
+                System.out.printf("%.3f\n", result);
             }
-            
+
             System.out.println("Хотите продолжить вычисления? [yes/no]");
-            option = console.next();
-            while (!option.equals("yes")) {
-                if (option.equals("no")) {
-                    break;
-                }
-                System.out.print("Некорректный ответ. Хотите продолжить вычисления? [yes/no]\n");
-                option = console.next();
+            option = console.nextLine();
+            if (!option.equals("yes")) {
+                checkAnswer(option);
             }
         } while (option.equals("yes"));
         System.out.println("Расчёты завершены.");
+    }
+
+    public static void checkAnswer(String option) {
+        Scanner console = new Scanner(System.in);
+        while (!option.equals("no")) {
+            System.out.print("Некорректный ответ. Хотите продолжить вычисления? [yes/no]\n");
+            option = console.next();
+        }
     }
 }
