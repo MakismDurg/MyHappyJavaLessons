@@ -11,33 +11,23 @@ public class CalculatorTest {
         do {
             System.out.print("Введите математическое выражение: ");
             String mathExpression = console.nextLine();
-            String[] splittedExpression = mathExpression.split(" ");
-            calculator.setA(Integer.parseInt(splittedExpression[0]));
-            calculator.setSign(splittedExpression[1].charAt(0));
-            calculator.setB(Integer.parseInt(splittedExpression[2]));
-            calculator.calculate();
             System.out.print("Результат вычислений = ");
-            double result = calculator.getResult();
-            if (result % 1 == 0) {
-                System.out.println((int) result);
-            } else {
-                System.out.printf("%.3f\n", result);
-            }
-
+            calculator.calculate(mathExpression);
             System.out.println("Хотите продолжить вычисления? [yes/no]");
             option = console.nextLine();
             if (!option.equals("yes")) {
-                checkAnswer(option);
+                option = checkAnswer(option);
             }
         } while (option.equals("yes"));
         System.out.println("Расчёты завершены.");
     }
 
-    public static void checkAnswer(String option) {
+    public static String checkAnswer(String option) {
         Scanner console = new Scanner(System.in);
-        while (!option.equals("no")) {
+        while (!option.equals("no") && !option.equals("yes")) {
             System.out.print("Некорректный ответ. Хотите продолжить вычисления? [yes/no]\n");
-            option = console.next();
+            option = console.nextLine();
         }
+        return option;
     }
 }

@@ -6,23 +6,11 @@ public class Calculator {
     private char sign;
     private double result;
 
-    public void setA(int a) {
-        this.a = a;
-    }
-
-    public void setB(int b) {
-        this.b = b;
-    }
-
-    public void setSign(char sign) {
-        this.sign = sign;
-    }
-
-    public double getResult() {
-        return result;
-    }
-
-    public void calculate() {
+    public double calculate(String expression) {
+        String[] splittedExpression = expression.split(" ");
+        a = Integer.parseInt(splittedExpression[0]);
+        sign = splittedExpression[1].charAt(0);
+        b = Integer.parseInt(splittedExpression[2]);
         switch (sign) {
             case '+':
                 result = a + b;
@@ -40,8 +28,14 @@ public class Calculator {
                 result = Math.pow(a, b);
                 break;
             case '%':
-                result = (double) a / 100 * b;
+                result = (double) a % b;
                 break;
         }
+        if (result % 1 == 0) {
+            System.out.println((int) result);
+        } else {
+            System.out.printf("%.3f\n", result);
+        }
+        return result;
     }
 }
