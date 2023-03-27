@@ -28,7 +28,7 @@ public class Calculator {
                 result = Math.pow(a, b);
                 break;
             case '%':
-                result = (double) a % b;
+                result = a % b;
                 break;
         }
         if (result % 1 == 0) {
