@@ -22,7 +22,7 @@ public class Calculator {
                 result = a * b;
                 break;
             case '/':
-                result = (double) a / b;
+                result = a / b;
                 break;
             case '^':
                 result = Math.pow(a, b);
