@@ -1,8 +1,8 @@
 package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
-    private int a;
-    private int b;
+    private double a;
+    private double b;
     private char sign;
     private double result;
 
@@ -29,12 +29,6 @@ public class Calculator {
                 break;
             case '%':
                 result = a % b;
-                break;
-        }
-        if (result % 1 == 0) {
-            System.out.println((int) result);
-        } else {
-            System.out.printf("%.3f\n", result);
         }
         return result;
     }
