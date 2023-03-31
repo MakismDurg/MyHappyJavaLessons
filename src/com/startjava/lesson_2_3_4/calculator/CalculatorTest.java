@@ -4,30 +4,24 @@ import java.util.Scanner;
 
 public class CalculatorTest {
     public static void main(String[] args) {
-        System.out.println("Давайте что-нибудь посчитаем");
         Scanner console = new Scanner(System.in);
+        System.out.println("Давайте что-нибудь посчитаем");
         Calculator calculator = new Calculator();
-        String option;
+        String option = "yes";
         do {
-            System.out.print("Введите математическое выражение: ");
-            String mathExpression = console.nextLine();
-            System.out.print("Результат вычислений = ");
-            calculator.calculate(mathExpression);
+            if (option.equals("yes")) {
+                double result = calculator.calculate();
+                if (result % 1 == 0) {
+                    System.out.println((int) result);
+                } else {
+                    System.out.printf("%.3f\n", result);
+                }
+            } else {
+                System.out.println("Вариантов ответа только два");
+            }
             System.out.println("Хотите продолжить вычисления? [yes/no]");
             option = console.nextLine();
-            if (!option.equals("yes")) {
-                option = checkAnswer(option);
-            }
-        } while (option.equals("yes"));
+        } while (!option.equals("no"));
         System.out.println("Расчёты завершены.");
-    }
-
-    public static String checkAnswer(String option) {
-        Scanner console = new Scanner(System.in);
-        while (!option.equals("no") && !option.equals("yes")) {
-            System.out.print("Некорректный ответ. Хотите продолжить вычисления? [yes/no]\n");
-            option = console.nextLine();
-        }
-        return option;
     }
 }

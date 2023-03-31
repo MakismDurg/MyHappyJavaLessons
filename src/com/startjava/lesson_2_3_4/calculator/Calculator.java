@@ -1,12 +1,20 @@
 package com.startjava.lesson_2_3_4.calculator;
 
+import java.util.Scanner;
+
 public class Calculator {
     private double a;
     private double b;
     private char sign;
 
-    public double calculate(String expression) {
-        String[] splittedExpression = expression.split(" ");
+    private double res;
+
+    public double calculate() {
+        Scanner console = new Scanner(System.in);
+        System.out.print("Введите математическое выражение: ");
+        String mathExpression = console.nextLine();
+        System.out.print("Результат вычислений = ");
+        String[] splittedExpression = mathExpression.split(" ");
         a = Integer.parseInt(splittedExpression[0]);
         sign = splittedExpression[1].charAt(0);
         b = Integer.parseInt(splittedExpression[2]);
@@ -23,12 +31,8 @@ public class Calculator {
                 return Math.pow(a, b);
             case '%':
                 return a % b;
+            default:
+                return 0;
         }
-        if (result % 1 == 0) {
-            System.out.println((int) result);
-        } else {
-            System.out.printf("%.3f\n", result);
-        }
-
     }
 }
