@@ -10,12 +10,11 @@ public class CalculatorTest {
         String option = "yes";
         do {
             if (option.equals("yes")) {
-                double result = calculator.calculate();
-                if (result % 1 == 0) {
-                    System.out.println((int) result);
-                } else {
-                    System.out.printf("%.3f\n", result);
-                }
+                System.out.print("Введите математическое выражение: ");
+                String mathExpression = console.nextLine();
+                System.out.print("Результат вычислений = ");
+                double result = calculator.calculate(mathExpression);
+                outputResult(result);
             } else {
                 System.out.println("Вариантов ответа только два");
             }
@@ -23,5 +22,13 @@ public class CalculatorTest {
             option = console.nextLine();
         } while (!option.equals("no"));
         System.out.println("Расчёты завершены.");
+    }
+
+    public static void outputResult(double result) {
+        if (result % 1 == 0) {
+            System.out.println((int) result);
+        } else {
+            System.out.printf("%.3f\n", result);
+        }
     }
 }
