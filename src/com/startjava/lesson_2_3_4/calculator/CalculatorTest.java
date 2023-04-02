@@ -2,18 +2,20 @@ package com.startjava.lesson_2_3_4.calculator;
 
 import java.util.Scanner;
 
+import static com.startjava.lesson_2_3_4.calculator.Calculator.calculate;
+/*TODO
+        используйте новый switch expression*/
 public class CalculatorTest {
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
         System.out.println("Давайте что-нибудь посчитаем");
-        Calculator calculator = new Calculator();
         String option = "yes";
         do {
             if (option.equals("yes")) {
                 System.out.print("Введите математическое выражение: ");
                 String mathExpression = console.nextLine();
                 System.out.print("Результат вычислений = ");
-                double result = calculator.calculate(mathExpression);
+                double result = calculate(mathExpression);
                 outputResult(result);
             } else {
                 System.out.println("Вариантов ответа только два");
@@ -25,10 +27,6 @@ public class CalculatorTest {
     }
 
     public static void outputResult(double result) {
-        if (result % 1 == 0) {
-            System.out.println((int) result);
-        } else {
-            System.out.printf("%.3f\n", result);
-        }
+        System.out.printf((result % 1 == 0 ? "%d" : "%,.3f") + "\n", (int)result, result);
     }
 }
