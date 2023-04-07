@@ -6,21 +6,15 @@ public class Calculator {
         double a = Integer.parseInt(splittedExpression[0]);
         char sign = splittedExpression[1].charAt(0);
         double b = Integer.parseInt(splittedExpression[2]);
-        switch (sign) {
-            case '+':
-                return a + b;
-            case '-':
-                return a - b;
-            case '*':
-                return a * b;
-            case '/':
-                return a / b;
-            case '^':
-                return Math.pow(a, b);
-            case '%':
-                return a % b;
-            default:
-                return 0;
-        }
+        double result = switch (sign) {
+            case '+' -> a + b;
+            case '-' -> a - b;
+            case '*' -> a * b;
+            case '/' -> a / b;
+            case '^' -> Math.pow(a, b);
+            case '%' -> a % b;
+            default -> throw new IllegalStateException("Нельзя вводить " + sign);
+        };
+        return result;
     }
 }
