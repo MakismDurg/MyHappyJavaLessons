@@ -10,15 +10,14 @@ public class Calculator {
             throw new IllegalStateException("Числа должны быть положительными");
         }
 
-        double result = switch (sign) {
-            case '+' -> a + b;
-            case '-' -> a - b;
-            case '*' -> a * b;
-            case '/' -> a / b;
-            case '^' -> Math.pow(a, b);
-            case '%' -> a % b;
+        return switch (sign) {
+            case '+' ->  a + b;
+            case '-' ->  a - b;
+            case '*' ->  a * b;
+            case '/' ->  a / b;
+            case '^' ->  Math.pow(a, b);
+            case '%' ->  a % b;
             default -> throw new IllegalStateException("Знак вычислния введён неверно. Используй +, -, *, /, ^, %");
         };
-        return result;
     }
 }
