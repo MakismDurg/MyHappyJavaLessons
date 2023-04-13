@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 import static com.startjava.lesson_2_3_4.calculator.Calculator.calculate;
 
-/*TODO
-        используйте новый switch expression*/
 public class CalculatorTest {
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
@@ -24,7 +22,9 @@ public class CalculatorTest {
                 System.out.println("Хотите продолжить вычисления? [yes/no]");
                 option = console.nextLine();
             } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-                System.out.println("Неверный формат ввода выражения");
+                System.out.println("Требуется вводить целые числа и знак вычисления через пробел");
+            } catch (IllegalStateException e) {
+                System.out.println(e.getMessage());
             }
         } while (!option.equals("no"));
         System.out.println("Расчёты завершены.");
