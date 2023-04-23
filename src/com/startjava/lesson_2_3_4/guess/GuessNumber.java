@@ -15,9 +15,10 @@ public class GuessNumber {
         int secretNum = (int) (Math.random() * 100 + 1);
         Scanner console = new Scanner(System.in);
 
-        while (true) {
+        for(int i = 0; i < GuessNumberTest.LIMIT_OF_GUESSES; i++) {
             System.out.println(player1.getName() + ", введи свой вариант:");
             int guessNum = console.nextInt();
+            player1.saveNums(guessNum, i);
             if (guessNum > secretNum) {
                 System.out.println("Введённое число больше загаданного");
             } else if (guessNum < secretNum) {
@@ -29,6 +30,7 @@ public class GuessNumber {
 
             System.out.println(player2.getName() + ", введи свой вариант:");
             guessNum = console.nextInt();
+            player2.saveNums(guessNum, i);
             if (guessNum > secretNum) {
                 System.out.println("Введённое число больше загаданного");
             } else if (guessNum < secretNum) {

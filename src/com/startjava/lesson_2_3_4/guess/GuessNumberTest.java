@@ -3,31 +3,32 @@ package com.startjava.lesson_2_3_4.guess;
 import java.util.Scanner;
 
 public class GuessNumberTest {
+    public final static int LIMIT_OF_GUESSES = 10;
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
 
         System.out.println("Первый игрок, введите имя:");
-        Player player1 = new Player(console.nextLine());
+        int [] player1nums = new int[LIMIT_OF_GUESSES];
+        Player player1 = new Player(console.nextLine(),player1nums);
 
         System.out.println("Второй игрок, введите имя:");
-        Player player2 = new Player(console.nextLine());
+        int [] player2nums = new int[LIMIT_OF_GUESSES];
+        Player player2 = new Player(console.nextLine(), player2nums);
+
 
         GuessNumber game = new GuessNumber(player1, player2);
-        String option;
+        String option = "yes";
 
         do {
-            game.launch();
+            if (option.equals("yes")) {
+                game.launch();
+            } else if (!option.equals("no")) {
+                System.out.println("Введите yes или no");
+            }
             System.out.println("\nХотите сыграть повторно? [yes/no]");
             option = console.nextLine();
-            while (!option.equals("yes")) {
-                if (option.equals("no")) {
-                    break;
-                } else {
-                    System.out.println("Введите yes или no");
-                    option = console.nextLine();
-                }
-            }
-        } while (option.equals("yes"));
+        } while (!option.equals("no"));
+
         System.out.println("Всем спасибо, до новых встреч.\nБерегите себя и своих близких.");
     }
 }
